@@ -2,20 +2,13 @@ cmake_minimum_required(VERSION 3.15)
 
 project(Plugin)
 
-include(BroPlugin)
+include(ZeekPlugin)
 
-find_package(Napatech)
+find_package(Napatech REQUIRED)
 
-if ( NAPATECH_FOUND )
-    include_directories(BEFORE ${NAPATECH_INCLUDE_DIR})
-    bro_plugin_begin(Zeek Napatech)
-    bro_plugin_cc(src/Plugin.cc)
-    bro_plugin_cc(src/Napatech.cc)
-    bro_plugin_bif(src/Napatech.bif)
-    bro_plugin_link_library(${NAPATECH_LIBRARY})
-    bro_plugin_dist_files(broctl/Napatech.py)
-    bro_plugin_end()
-    message(STATUS "Napatech prefix      : ${NAPATECH_ROOT_DIR}")
-else ()
-    message(FATAL_ERROR "Napatech library and/or headers not found.")
-endif ()
+zeek_add_plugin(Zeek Napatech
+    INCLUDE_DIRS ${NAPATECH_INCLUDE_DIR}
+    DEPENDENCIES ${NAPATECH_LIBRARY}
+    SOURCES src/Plugin.cc src/Napatech.cc
+    BIFS src/Napatech.bif
+)
