@@ -1,5 +1,8 @@
-# 
-# This script loads at Bro startup.
-# 
+##! Packet source using Napatech
 
-@load ./init.zeek
+module Napatech;
+
+export {
+    ## Default timeout for NT_NetRxGet()
+    const net_rx_get_timeout_ms: int = 1;
+}

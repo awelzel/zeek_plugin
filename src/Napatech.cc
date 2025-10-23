@@ -162,7 +162,7 @@ bool NapatechSource::ExtractNextPacket(Packet* pkt)
 
 	u_char* data;
 	while (true) {
-		status = NT_NetRxGet(rx_stream, &packet_buffer, 1000);
+		status = NT_NetRxGet(rx_stream, &packet_buffer, BifConst::Napatech::net_rx_get_timeout_ms);
 
 		if (status != NT_SUCCESS) {
 			if ((status == NT_STATUS_TIMEOUT) || (status == NT_STATUS_TRYAGAIN)) {

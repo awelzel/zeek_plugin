@@ -3,6 +3,4 @@
 
 module Napatech;
 
-# const test_value: count;
-# const ntpl_cmd: string;
-
+const net_rx_get_timeout_ms: int;
