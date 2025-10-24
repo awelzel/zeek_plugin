@@ -1,5 +1,9 @@
-# zeek-napatech
-Napatech 3g support for Zeek.
+# zeek-packet-source-napatech
+
+Napatech 3g support for Zeek 8.0 and later.
+
+> This is a fork of [napatech/zeek_plugin](https://github.com/napatech/zeek_plugin)
+> which was based on Hosom's [hosom/bro-napatech](https://github.com/hosom/bro-napatech).
 
 Installation
 ------------
@@ -7,7 +11,7 @@ Installation
 Follow Napatech's instructions to install its kernel module and userspace libraries. 
 
 ```
-./configure --bro-dist=<path to zeek sources> --with-napatech=<path to napatech installation> && make && make install
+./configure --with-napatech=<path to napatech installation> && make && make install
 ```
 
 If everything built and installed correctly, you should be able to verify the installation with the following command and output:
@@ -45,7 +49,7 @@ For example, to monitor ``stream 9``:
 zeek -i napatech::9
 ```
 
-To use it in production with multiple Zeek processes, use a configuraiton similar to this in node.cfg:
+To use it in production with multiple Zeek processes, use a configuration similar to this in node.cfg:
 
 ```
 [worker-1]
@@ -59,7 +63,3 @@ host=localhost
 interface=napatech::2
 ```
 
-Acknowledgements
-----------------
-
-This is a Zeek plugin based on an earlier [Bro plugin](https://github.com/hosom/bro-napatech).
